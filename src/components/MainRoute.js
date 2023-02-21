@@ -1,12 +1,14 @@
 import React from 'react'
-import { Outlet, useParams } from 'react-router-dom'
+import CounterNarv from '../reduxComponents/CounterNarv'
+import ProfileOne from '../reduxComponents/ProfileOne'
 
 const MainRoute = () => {
-      const {username} = useParams();
+  
   return (
     <div>
-      <Outlet/>
-     <p className="text">Here is the params of the application {username}</p>
+  <CounterNarv/>
+  Check All Profiles
+  {/* <ProfileOne/> */}
     </div>
   )
 }

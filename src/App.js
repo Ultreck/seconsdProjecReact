@@ -5,10 +5,21 @@ import PostNavbar from './secondcomponents/PostNavbar';
 import DisplayPost from './secondcomponents/DisplayPost';
 import MainRoute from './components/MainRoute';
 import One from './routes/One';
+import UserGuard from './guard/UserGuard';
+import Dashboard from './reduxComponents/Dashboard';
+import Login from './components/Login';
+import DisplayUser from './secondcomponents/DisplayUser';
+import PostUsers from './secondcomponents/PostUsers';
+import ProfileOne from './reduxComponents/ProfileOne';
+import ProfileTwo from './reduxComponents/ProfileTwo';
+import ProfileThree from './reduxComponents/ProfileThree';
+import LoginUsers from './secondcomponents/LoginUsers';
+import FormikYup from './formikYup/FormikYup';
+
 
 
 const App = () => {
- 
+  const [data, setdata] = useState({})
   return (
     <>
     {/* <MainRoute/> */}
@@ -16,12 +27,26 @@ const App = () => {
     <PostNavbar/>
     <Routes>
         <Route path='/' element={<NewPost/>}/>
-        <Route path='/display' element={<DisplayPost/>}/>
-        <Route path='/main/:username' element={<MainRoute/>}/>
-        <Route path='/main' element={<MainRoute/>} children={[
+      <Route path='/formik' element={<FormikYup/>}/>
+        <Route path='/post-user' element={<PostUsers setdata={setdata} />}/>
+        <Route path='/display-blog' element={<DisplayPost/>}/>
+        <Route path='/display-user' element={<DisplayUser/>}/>
+        <Route path='/login' element={<LoginUsers/>}/>
+        {/* <Route path='/profilslice' element={< data={data} />}/> */}
+        <Route path='/mainroute' element={<MainRoute/>}/>
+        <Route path='/profile-one' element={<ProfileOne/>}/>,
+        <Route path='/profile-two' element={<ProfileTwo/>}/>,
+        <Route path='/profile-three' element={<ProfileThree/>}/>
+        <Route path='/main' element={<UserGuard/>} children={[
+          // <Route path='profile-one' element={<ProfileOne/>}/>,
+          // <Route path='profile-two' element={<ProfileTwo/>}/>,
+          // <Route path='profile-three' element={<ProfileThree/>}/>,
+          <Route path='dashboard' element={<Dashboard/>}/>,
           <Route path='one' element={<One/>}/>,
           
         ]} />
+        <Route path='*' element={<div>Hello You must have routed to the edge of no existence</div>}/>,
+
     </Routes> 
     {/* <NewPost/> */}
     {/* <DisplayPost/> */}

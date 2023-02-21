@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
 const PostNavbar = () => {
+  const {profile} = useSelector((state) => state)
   return (
     <>
-            <nav className=" relative w-full flex flex-wrap items-center justify-between  py-4 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light ">
+            <nav className=" fixed z-40 top-0 w-full flex flex-wrap items-center justify-between  py-4 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light ">
   <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
   <button className="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
     " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -31,19 +33,32 @@ const PostNavbar = () => {
   </a>
   <ul className="navbar-nav flex flex-col md:flex pl-0 list-style-none mr-auto">
     <li className="nav-item p-2">
-      <NavLink className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"  to='/'>Post</NavLink>
+      <NavLink className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"  to='/'>Post Blog</NavLink>
     </li>
     <li className="nav-item p-2">
-      <NavLink className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to='/display'>Dispay Post</NavLink>
+      <NavLink className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to='/display-blog'>Display Blog</NavLink>
     </li>
     <li className="nav-item p-2">
-      <NavLink className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to='/main'>More</NavLink>
+      <NavLink className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to='/post-user'>Sign Up</NavLink>
+    </li>
+    <li className="nav-item p-2">
+      <NavLink className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to='/login'>Login</NavLink>
+    </li>
+    <li className="nav-item p-2">
+      <NavLink className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to='/display-user'>Display User</NavLink>
+    </li>
+    <li className="nav-item p-2">
+      <NavLink className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to='/mainroute'>Redux</NavLink>
+    </li>
+    <li className="nav-item p-2">
+      <NavLink className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" to='/formik'>Yup/Formik</NavLink>
     </li>
   </ul>
 
   </div>
-
   <div className="flex items-center relative">
+    <div className="text-2xl text-red-500 mx-5">{profile.firstname}</div>
+    <div className="text-2xl text-red-500 mx-5">{profile.lastname}</div>
   <a className="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4" href="##">
     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
       className="w-4" role="img" xmlns="http://www.w3.org/2000/svg"
