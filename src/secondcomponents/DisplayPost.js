@@ -3,13 +3,13 @@ import axios from 'axios';
 import img from '../images/Spin-1s-299px.gif';
 import baseUrl from '../baseUrl';
 import {FaEllipsisV} from 'react-icons/fa'
-import { Link, NavLink } from 'react-router-dom';
+// import { Link, NavLink } from 'react-router-dom';
 
 
 const DisplayPost = () => {
 
   const [backEndData, setbackEndData] = useState([])
-  const [deleteIndex, setdeleteIndex] = useState()
+  // const [deleteIndex, setdeleteIndex] = useState()
   const [showMore, setshowMore] = useState(true)
 
   const getDataBase = () =>{
@@ -86,7 +86,8 @@ const DisplayPost = () => {
 </div>
            </div>
               <div className="p-6 ">
-                  <img src={`${baseUrl}/postImages/${val.filename}`} alt="postImage" className="text w-full h-96" />
+                  {/* <img src={`${baseUrl}/postImages/${val.filename}`} alt="postImage" className="text w-full h-96" /> */}
+                  <img src={val.fileLink? val.fileLink: `${baseUrl}/postImages/${val.filename}`} alt="postImage" className="text w-full h-96" />
               </div>
               <div className="py-3 px-6 border-t border-gray-300 text-gray-600">
               <p className="text-gray-700 text-start mb-4 text-lg">

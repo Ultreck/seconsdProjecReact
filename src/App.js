@@ -1,4 +1,6 @@
-import React , {useState}from 'react'
+import React , {
+  // useState
+}from 'react'
 import NewPost from './secondcomponents/NewPost';
 import { Route, Routes } from 'react-router-dom';
 import PostNavbar from './secondcomponents/PostNavbar';
@@ -7,19 +9,26 @@ import MainRoute from './components/MainRoute';
 import One from './routes/One';
 import UserGuard from './guard/UserGuard';
 import Dashboard from './reduxComponents/Dashboard';
-import Login from './components/Login';
+// import Login from './components/Login';
 import DisplayUser from './secondcomponents/DisplayUser';
-import PostUsers from './secondcomponents/PostUsers';
+// import PostUsers from './secondcomponents/PostUsers';
 import ProfileOne from './reduxComponents/ProfileOne';
 import ProfileTwo from './reduxComponents/ProfileTwo';
 import ProfileThree from './reduxComponents/ProfileThree';
 import LoginUsers from './secondcomponents/LoginUsers';
 import FormikYup from './formikYup/FormikYup';
+import axios from 'axios';
+import LearnSocket from './socket/LearnSocket';
 
+axios.interceptors.request.use((value) => {
+  value.headers = {
+    "Authorization": localStorage.token
+  }
+});
 
 
 const App = () => {
-  const [data, setdata] = useState({})
+  // const [data, setdata] = useState({})
   return (
     <>
     {/* <MainRoute/> */}
@@ -28,10 +37,11 @@ const App = () => {
     <Routes>
         <Route path='/' element={<NewPost/>}/>
       <Route path='/formik' element={<FormikYup/>}/>
-        <Route path='/post-user' element={<PostUsers setdata={setdata} />}/>
+        {/* <Route path='/post-user' element={<PostUsers setdata={setdata} />}/> */}
         <Route path='/display-blog' element={<DisplayPost/>}/>
         <Route path='/display-user' element={<DisplayUser/>}/>
         <Route path='/login' element={<LoginUsers/>}/>
+        <Route path='/socketio' element={<LearnSocket/>}/>
         {/* <Route path='/profilslice' element={< data={data} />}/> */}
         <Route path='/mainroute' element={<MainRoute/>}/>
         <Route path='/profile-one' element={<ProfileOne/>}/>,

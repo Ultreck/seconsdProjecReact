@@ -1,13 +1,13 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { useFormik } from 'formik';
-import React from 'react'
 import * as Yup from 'yup';
+import React from 'react'
 
 const FormikYup = () => {
       const validationSchema = Yup.object({
             firstname: Yup.string().required(),
             lastname: Yup.string().required(),
-            email: Yup.string().required(),
+            email: Yup.string().email().required(),
             password: Yup.string().min(8).max(32).required(),
       })
       const initialValues = {
@@ -16,6 +16,7 @@ const FormikYup = () => {
             email:"",
             password:"",
       };
+
 
       const formik = useFormik({
             initialValues,

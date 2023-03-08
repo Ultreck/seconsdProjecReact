@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import baseUrl from '../baseUrl';
 
 
 const LoginUsers = () => {
+      const navigate = useNavigate();
       const [userData, setuserData] = useState({email: "", password: ""});
       const handleChanges = (e) =>{
             const {name, value} = e.target
@@ -13,6 +15,10 @@ const LoginUsers = () => {
 
       const handleLoginUser = () => {
             axios.post(baseUrl + "/login", userData).then(res => {
+                  if(res.data.success){
+                        localStorage.setItem("token", res.data.token);
+                        navigate("/main/dashboard");
+                  }
               //     console.log(res);
               //     setisLoading(false)
             }).catch(err =>{
